@@ -1,9 +1,5 @@
 # 🚀 SwishCoin Blockchain Project Roadmap
 
-This document outlines the **step-by-step roadmap** for the SwishCoin Blockchain Project, from **blockchain fundamentals** to **full feature implementation**.
-
----
-
 ## 📌 **Phase 1: Understanding Blockchain & Smart Contracts**
 ✔ Learn blockchain fundamentals: Blocks, Hashing, Consensus  
 ✔ Explore **Proof of Work (PoW)** & **Proof of Stake (PoS)**  
