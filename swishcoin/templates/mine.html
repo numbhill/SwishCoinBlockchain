@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="w-full max-w-md bg-white shadow-lg rounded-lg p-6 text-center">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Mining Blocks</h2>
+
+        {% if message %}
+        <p class="text-green-600 font-semibold">{{ message }}</p>
+        {% else %}
+        <p class="text-gray-500">Click the button below to mine pending transactions.</p>
+        {% endif %}
+
+        <form method="post" action="{% url 'mine_block' %}" class="mt-6">
+            {% csrf_token %}
+            <button type="submit"
+                    class="w-full bg-green-500 text-white px-6 py-3 rounded-md font-semibold shadow-md
+                       hover:bg-green-600 transition duration-300">
+                Mine Transactions
+            </button>
+        </form>
+
+        <p class="mt-6">
+            <a href="/explorer"
+               class="inline-block bg-blue-500 text-white px-6 py-3 rounded-md font-semibold shadow-md
+                      hover:bg-blue-600 transition duration-300">
+                View Blockchain
+            </a>
+        </p>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="w-full max-w-3xl bg-white shadow-lg rounded-lg p-6">
+        <h2 class="text-2xl font-bold text-gray-800 text-center mb-6">All Questions</h2>
+
+        {% if questions %}
+        <ul class="space-y-4">
+            {% for question in questions %}
+            <li class="bg-gray-100 p-4 rounded-lg shadow-md hover:bg-gray-200 transition duration-300">
+                <a href="{% url 'view_question' question.id %}"
+                   class="text-indigo-600 font-semibold hover:underline text-lg">
+                    {{ question.title }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="text-gray-500 text-center">No questions have been posted yet.</p>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

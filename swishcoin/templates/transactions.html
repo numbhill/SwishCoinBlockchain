@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-6">
+    <h2 class="text-2xl font-bold text-gray-800 text-center mb-4">Transaction History</h2>
+
+    {% if transactions %}
+    <div class="overflow-x-auto">
+        <table class="w-full border-collapse border border-gray-200">
+            <thead class="bg-blue-600 text-white">
+                <tr>
+                    <th class="p-3 text-left">Sender</th>
+                    <th class="p-3 text-left">Receiver</th>
+                    <th class="p-3 text-left">Amount</th>
+                    <th class="p-3 text-left">Type</th>
+                    <th class="p-3 text-left">Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tx in transactions %}
+                <tr class="border-b border-gray-200 even:bg-gray-50 hover:bg-gray-100">
+                    <td class="p-3">{% if tx.sender %} {{ tx.sender.username }} {% else %} System {% endif %}</td>
+                    <td class="p-3">{{ tx.receiver.username }}</td>
+                    <td class="p-3 text-blue-600 font-semibold">{{ tx.amount }} SwishCoins</td>
+                    <td class="p-3">{{ tx.get_transaction_type_display }}</td>
+                    <td class="p-3 text-gray-500">{{ tx.timestamp }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <p class="text-center text-gray-600 mt-4">No transactions found.</p>
+    {% endif %}
+</div>
+{% endblock %}

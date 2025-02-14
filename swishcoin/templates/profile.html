@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="w-full max-w-3xl bg-white shadow-lg rounded-lg p-8">
+        <!-- User Welcome Message -->
+        <h2 class="text-3xl font-bold text-gray-800 text-center">Welcome, {{ user.username }}</h2>
+
+        <!-- Balance Information -->
+        <div class="mt-6 text-center">
+            <p class="text-lg font-semibold text-gray-600">Your Balance:</p>
+            <p class="text-2xl font-bold text-blue-600">{{ profile.balance }} SwishCoins</p>
+        </div>
+
+        <!-- Total Supply -->
+        <div class="mt-6 text-center">
+            <p class="text-lg font-semibold text-gray-600">Total Supply:</p>
+            <p class="text-2xl font-bold text-green-600">{{ total_supply }} SwishCoins</p>
+        </div>
+
+        <!-- Mining Rewards Section -->
+        <div class="mt-8 bg-blue-50 p-5 rounded-lg text-center shadow-md">
+            <h3 class="text-xl font-bold text-gray-700">Mining Rewards</h3>
+            <p class="text-gray-600 mt-1">
+                Each mined block rewards you <strong class="text-green-500">10 SwishCoins</strong>.
+            </p>
+            <a href="/mine_block"
+               class="mt-4 inline-block bg-blue-600 text-white font-semibold px-6 py-2 rounded-lg shadow-md
+                      hover:bg-blue-700 transition duration-300">
+                Mine Transactions Now
+            </a>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="mt-8 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+            <a href="/transactions"
+               class="bg-gray-700 text-white font-semibold px-6 py-2 rounded-lg shadow-md
+                      hover:bg-gray-800 transition duration-300 text-center">
+                View Transactions
+            </a>
+            <a href="/logout"
+               class="bg-red-600 text-white font-semibold px-6 py-2 rounded-lg shadow-md
+                      hover:bg-red-700 transition duration-300 text-center">
+                Logout
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

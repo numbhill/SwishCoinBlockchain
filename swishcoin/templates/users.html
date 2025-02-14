@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}User Balances{% endblock %}
+{% block content %}
+
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="w-full max-w-3xl bg-white shadow-lg rounded-lg p-6">
+        <h1 class="text-2xl font-bold text-gray-800 text-center mb-6">SwishCoin Balances</h1>
+
+        <div class="overflow-x-auto">
+            <table class="w-full border border-gray-200 rounded-lg shadow-md">
+                <thead class="bg-indigo-600 text-white">
+                <tr>
+                    <th class="px-4 py-2 text-left">User</th>
+                    <th class="px-4 py-2 text-left">Balance (SwishCoins)</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                <tr class="border-b border-gray-200 even:bg-gray-50 hover:bg-gray-100">
+                    <td class="px-4 py-2">{{ user.user.username }}</td>
+                    <td class="px-4 py-2 text-blue-600 font-semibold">{{ user.balance }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

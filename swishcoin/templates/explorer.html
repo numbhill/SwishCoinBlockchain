@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}SwishCoin Blockchain{% endblock %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto">
+    <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">SwishCoin Blockchain</h1>
+
+    {% for block in chain %}
+    <div class="bg-white shadow-lg rounded-lg p-6 mb-6 border border-gray-300">
+        <h2 class="text-xl font-bold text-blue-600">Block #{{ block.index }}</h2>
+        <p class="text-gray-600"><strong>Timestamp:</strong> {{ block.timestamp }}</p>
+        <p class="text-gray-600"><strong>Previous Hash:</strong> <span class="text-red-500 break-words">{{ block.previous_hash }}</span></p>
+        <p class="text-gray-600"><strong>Current Hash:</strong> <span class="text-green-500 break-words">{{ block.hash }}</span></p>
+
+        <h3 class="text-lg font-semibold mt-4 text-gray-700">Transactions:</h3>
+        {% if block.transactions %}
+        <div class="overflow-x-auto mt-2">
+            <table class="w-full border-collapse border border-gray-200">
+                <thead class="bg-blue-600 text-white">
+                    <tr>
+                        <th class="p-3 text-left">Sender</th>
+                        <th class="p-3 text-left">Receiver</th>
+                        <th class="p-3 text-left">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tx in block.transactions %}
+                    <tr class="border-b border-gray-200 even:bg-gray-50 hover:bg-gray-100">
+                        <td class="p-3">{% if tx.sender %}{{ tx.sender }}{% else %}System{% endif %}</td>
+                        <td class="p-3">{{ tx.receiver }}</td>
+                        <td class="p-3 text-blue-600 font-semibold">{{ tx.amount }} SwishCoins</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p class="text-gray-500 mt-2">No transactions in this block.</p>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
